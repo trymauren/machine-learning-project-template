@@ -1,0 +1,21 @@
+hydra:
+  run:
+    dir: ./log/${log_header}/${timestamp}/${hydra.job.override_dirname}
+  sweep:
+    dir: ./log/${log_header}/${timestamp}/${hydra.job.override_dirname}
+    subdir: ${hydra.job.num} # default
+  job:
+    name: "name_from_config_file" # name of the job, visible outside job?
+    config:
+        override_dirname:
+          exclude_keys:
+            - log_header # dont want log_header included twice in logdir name
+          kv_sep: "=" # default
+          item_sep: "_"
+
+timestamp: ${now:%Y-%m-%d_%H-%M-%S}
+log_header: ???  # must be provided
+
+seed: 829
+device: cpu
+log_types: ['tensorboard']
