@@ -11,7 +11,7 @@ hydra:
           exclude_keys:
             - log_header # dont want log_header included twice in logdir name
           kv_sep: "=" # default
-          item_sep: "_"
+          item_sep: "," # default
 
 timestamp: ${now:%Y-%m-%d_%H-%M-%S}
 log_header: ???  # must be provided
